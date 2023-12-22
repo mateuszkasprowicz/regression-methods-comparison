@@ -1,4 +1,4 @@
-# Porównanie 3 metod regresji na podstawie 3 różnych zbiorów danych
+# Comparison of 3 regression methods on 3 different datasets
 
 ## How to set up the environment?
 
@@ -12,3 +12,8 @@
 
 1. Create Conda environment: `make conda-environment`
 2. Activate Conda environment: `conda activate regression-methods-comparison`
+
+## How to download the datasets?
+
+1. You will need the Kaggle API credentials for that. Read more here: https://github.com/Kaggle/kaggle-api#api-credentials
+2. Download the datasets: `make download-datasets`
