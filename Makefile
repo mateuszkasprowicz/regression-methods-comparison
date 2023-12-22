@@ -3,6 +3,7 @@
 	virtual-env
 	pip-install-requirements
 	update-requirements
+	download-datasets
 
 conda-environment:
 	conda env create --name regression-methods-comparison --file=environments.yml
