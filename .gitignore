@@ -2,3 +2,5 @@
 *.csv
 *.xlsx
 *.joblib
+/mlartifacts
+/mlruns
