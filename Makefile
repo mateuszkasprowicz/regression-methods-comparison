@@ -16,7 +16,7 @@ pip-install-requirements:
 
 update-requirements:
 	conda env export | grep -v "^prefix: " > environment.yml
-	conda list -e > requirements.txt
+	pip list --format=freeze > requirements.txt
 
 download-datasets:
 	kaggle datasets download dansbecker/melbourne-housing-snapshot -p data --unzip
