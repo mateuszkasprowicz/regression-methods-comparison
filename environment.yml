@@ -191,6 +191,7 @@ dependencies:
       - pydantic==2.5.3
       - pydantic-core==2.14.6
       - pyjwt==2.8.0
+      - python-dotenv==1.0.0
       - python-json-logger==2.0.7
       - python-slugify==8.0.1
       - pywavelets==1.5.0
