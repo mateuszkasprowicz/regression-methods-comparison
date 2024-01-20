@@ -3,5 +3,6 @@
 *.xlsx
 *.joblib
 .env
+/mlflow
 /mlartifacts
 /mlruns
