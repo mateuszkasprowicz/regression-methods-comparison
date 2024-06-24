@@ -58,17 +58,19 @@ housing_processing:
                 - Type
                 - Method
         target_encoder:
-            - SellerG
-            - Postcode
-            - Regionname
-            - CouncilArea
-            - Postcode
-            - Suburb
+            columns:
+                - SellerG
+                - Postcode
+                - Regionname
+                - CouncilArea
+                - Postcode
+                - Suburb
         drop:
-            - Address
-            - Lattitude
-            - Longtitude
-            - Date
+            columns:
+                - Address
+                - Lattitude
+                - Longtitude
+                - Date
 
 wine_quality_processing:
     random_state: ${random_state}
