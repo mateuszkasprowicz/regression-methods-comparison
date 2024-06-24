@@ -9,3 +9,19 @@ housing:
 wine_quality:
   type: pandas.CSVDataset
   filepath: data/01_raw/winequalityN.csv
+
+"{namespace}.X_train":
+  type: pandas.CSVDataset
+  filepath: data/03_primary/{namespace}_X_train.csv
+
+"{namespace}.X_test":
+  type: pandas.CSVDataset
+  filepath: data/03_primary/{namespace}_X_test.csv
+
+"{namespace}.Y_train":
+  type: pandas.CSVDataset
+  filepath: data/03_primary/{namespace}_Y_train.csv
+
+"{namespace}.Y_test":
+  type: pandas.CSVDataset
+  filepath: data/03_primary/{namespace}_Y_test.csv
