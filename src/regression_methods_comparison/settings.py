@@ -7,7 +7,7 @@ https://docs.kedro.org/en/stable/kedro_project_setup/settings.html."""
 # from pandas_viz.hooks import ProjectHooks
 
 # Hooks are executed in a Last-In-First-Out (LIFO) order.
-from hooks import ProjectHooks
+from .hooks import ProjectHooks
 
 HOOKS = (ProjectHooks(),)
 
