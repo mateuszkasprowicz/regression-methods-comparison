@@ -1,8 +1,8 @@
-test_size: 0.1
+default_test_size: 0.1
 
 abalone_processing:
     random_state: ${random_state}
-    test_size: ${test_size}
+    test_size: ${default_test_size}
     target: Rings
     features:
         - Sex
@@ -20,7 +20,7 @@ abalone_processing:
 
 housing_processing:
     random_state: ${random_state}
-    test_size: ${test_size}
+    test_size: ${default_test_size}
     target: Price
     features:
         - Suburb
@@ -72,7 +72,7 @@ housing_processing:
 
 wine_quality_processing:
     random_state: ${random_state}
-    test_size: ${test_size}
+    test_size: ${default_test_size}
     target: quality
     features:
         - type
