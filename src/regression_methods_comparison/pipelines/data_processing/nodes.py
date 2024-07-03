@@ -1,7 +1,6 @@
 from typing import Tuple, Any
 
 import pandas as pd
-import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.compose import make_column_transformer
 from sklearn.preprocessing import OneHotEncoder, TargetEncoder
