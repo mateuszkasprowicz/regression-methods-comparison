@@ -11,16 +11,38 @@ def create_pipeline(**kwargs) -> Pipeline:
             node(
                 func=split_data,
                 inputs=["data", "params:override_me"],
-                outputs=["X_train_split", "X_test_split", "y_train_split", "y_test_split"],
+                outputs=[
+                    "X_train_split",
+                    "X_test_split",
+                    "y_train_split",
+                    "y_test_split",
+                ],
             ),
             node(
                 func=impute_missing_values,
-                inputs=["X_train_split", "X_test_split", "y_train_split", "y_test_split", "params:override_me"],
-                outputs=["X_train_imputed", "X_test_imputed", "y_train_imputed", "y_test_imputed"],
+                inputs=[
+                    "X_train_split",
+                    "X_test_split",
+                    "y_train_split",
+                    "y_test_split",
+                    "params:override_me",
+                ],
+                outputs=[
+                    "X_train_imputed",
+                    "X_test_imputed",
+                    "y_train_imputed",
+                    "y_test_imputed",
+                ],
             ),
             node(
                 func=encode_categories,
-                inputs=["X_train_imputed", "X_test_imputed", "y_train_imputed", "y_test_imputed", "params:override_me"],
+                inputs=[
+                    "X_train_imputed",
+                    "X_test_imputed",
+                    "y_train_imputed",
+                    "y_test_imputed",
+                    "params:override_me",
+                ],
                 outputs=["X_train", "X_test", "y_train", "y_test"],
             ),
         ]
