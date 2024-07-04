@@ -1,0 +1,16 @@
+abalone_ml:
+  linreg: None
+  knn: None
+  random_forest: None
+
+housing_ml:
+  linreg: None
+  knn: None
+  random_forest: None
+
+wine_quality_ml:
+  linreg: None
+  knn: None
+  random_forest: None
+
+evaluate_ml: None
