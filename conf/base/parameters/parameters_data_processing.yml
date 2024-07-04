@@ -1,112 +1,111 @@
 default_test_size: 0.1
 
-abalone_processing:
-    random_state: ${random_state}
-    test_size: ${default_test_size}
-    target: Rings
-    features:
-        - Sex
-        - Length
-        - Diameter
-        - Height
-        - Whole weight
-        - Shucked weight
-        - Viscera weight
-        - Shell weight
-    encoder:
-        one_hot_encoder:
-            columns:
-                - Sex
-
-housing_processing:
-    random_state: ${random_state}
-    test_size: ${default_test_size}
-    target: Price
-    features:
-        - Suburb
-        - Address
-        - Rooms
-        - Type
-        - Method
-        - SellerG
-        - Date
-        - Distance
-        - Postcode
-        - Bedroom2
-        - Bathroom
-        - Car
-        - Landsize
-        - BuildingArea
-        - YearBuilt
-        - CouncilArea
-        - Lattitude
-        - Longtitude
-        - Regionname
-        - Propertycount
-    imputer:
-        mode_imputer:
-            columns:
-                - YearBuilt
-                - CouncilArea
-                - Car
-        mean_imputer:
-            columns:
-                - BuildingArea
-    encoder:
-        one_hot_encoder:
-            columns:
-                - Type
-                - Method
-        target_encoder:
-            columns:
-                - SellerG
-                - Postcode
-                - Regionname
-                - CouncilArea
-                - Postcode
-                - Suburb
-        drop:
-            columns:
-                - Address
-                - Lattitude
-                - Longtitude
-                - Date
-
-wine_quality_processing:
-    random_state: ${random_state}
-    test_size: ${default_test_size}
-    target: quality
-    features:
-        - type
-        - fixed acidity
-        - volatile acidity
-        - citric acid
-        - residual sugar
-        - chlorides
-        - free sulfur dioxide
-        - total sulfur dioxide
-        - density
-        - pH
-        - sulphates
-        - alcohol
-    imputer:
-        median_imputer:
-            columns:
-                - fixed acidity
-                - volatile acidity
-                - citric acid
-                - residual sugar
-                - chlorides
-                - free sulfur dioxide
-                - total sulfur dioxide
-                - density
-                - pH
-                - sulphates
-                - alcohol
-        mode_imputer:
-            columns:
-                - type
-    encoder:
-        one_hot_encoder:
-            columns:
-                - type
+data_processing:
+    abalone:
+        random_state: ${random_state}
+        test_size: ${default_test_size}
+        target: Rings
+        features:
+            - Sex
+            - Length
+            - Diameter
+            - Height
+            - Whole weight
+            - Shucked weight
+            - Viscera weight
+            - Shell weight
+        encoder:
+            one_hot_encoder:
+                columns:
+                    - Sex
+    housing:
+        random_state: ${random_state}
+        test_size: ${default_test_size}
+        target: Price
+        features:
+            - Suburb
+            - Address
+            - Rooms
+            - Type
+            - Method
+            - SellerG
+            - Date
+            - Distance
+            - Postcode
+            - Bedroom2
+            - Bathroom
+            - Car
+            - Landsize
+            - BuildingArea
+            - YearBuilt
+            - CouncilArea
+            - Lattitude
+            - Longtitude
+            - Regionname
+            - Propertycount
+        imputer:
+            mode_imputer:
+                columns:
+                    - YearBuilt
+                    - CouncilArea
+                    - Car
+            mean_imputer:
+                columns:
+                    - BuildingArea
+        encoder:
+            one_hot_encoder:
+                columns:
+                    - Type
+                    - Method
+            target_encoder:
+                columns:
+                    - SellerG
+                    - Postcode
+                    - Regionname
+                    - CouncilArea
+                    - Postcode
+                    - Suburb
+            drop:
+                columns:
+                    - Address
+                    - Lattitude
+                    - Longtitude
+                    - Date
+    wine_quality:
+        random_state: ${random_state}
+        test_size: ${default_test_size}
+        target: quality
+        features:
+            - type
+            - fixed acidity
+            - volatile acidity
+            - citric acid
+            - residual sugar
+            - chlorides
+            - free sulfur dioxide
+            - total sulfur dioxide
+            - density
+            - pH
+            - sulphates
+            - alcohol
+        imputer:
+            median_imputer:
+                columns:
+                    - fixed acidity
+                    - volatile acidity
+                    - citric acid
+                    - residual sugar
+                    - chlorides
+                    - free sulfur dioxide
+                    - total sulfur dioxide
+                    - density
+                    - pH
+                    - sulphates
+                    - alcohol
+            mode_imputer:
+                columns:
+                    - type
+        encoder:
+            one_hot_encoder:
+                columns:
+                    - type

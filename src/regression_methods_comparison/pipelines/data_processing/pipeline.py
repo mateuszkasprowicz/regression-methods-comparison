@@ -1,72 +1,56 @@
+from typing import List
+
 from kedro.pipeline import Pipeline, node
 from kedro.pipeline.modular_pipeline import pipeline
 
 from .nodes import split_data, impute_missing_values, encode_categories
 
 
-def create_pipeline(**kwargs) -> Pipeline:
+TEST_TRAIN_REFS = ["X_train", "X_test", "y_train", "y_test"]
 
-    processing_pipeline = pipeline(
+
+def make_suffixes(strings: List[str], suffix: str):
+    return [name + suffix for name in strings]
+
+
+def new_train_eval_template() -> Pipeline:
+
+    return pipeline(
         [
             node(
                 func=split_data,
                 inputs=["data", "params:override_me"],
-                outputs=[
-                    "X_train_split",
-                    "X_test_split",
-                    "y_train_split",
-                    "y_test_split",
-                ],
+                outputs=make_suffixes(TEST_TRAIN_REFS, "_split"),
             ),
             node(
                 func=impute_missing_values,
-                inputs=[
-                    "X_train_split",
-                    "X_test_split",
-                    "y_train_split",
-                    "y_test_split",
-                    "params:override_me",
-                ],
-                outputs=[
-                    "X_train_imputed",
-                    "X_test_imputed",
-                    "y_train_imputed",
-                    "y_test_imputed",
-                ],
+                inputs=make_suffixes(TEST_TRAIN_REFS, "_split") + ["params:override_me"],
+                outputs=make_suffixes(TEST_TRAIN_REFS, "_imputed"),
             ),
             node(
                 func=encode_categories,
-                inputs=[
-                    "X_train_imputed",
-                    "X_test_imputed",
-                    "y_train_imputed",
-                    "y_test_imputed",
-                    "params:override_me",
-                ],
-                outputs=["X_train", "X_test", "y_train", "y_test"],
+                inputs=make_suffixes(TEST_TRAIN_REFS, "_imputed") + ["params:override_me"],
+                outputs=TEST_TRAIN_REFS,
             ),
         ]
     )
 
-    abalone_pipeline = pipeline(
-        pipe=processing_pipeline,
-        inputs={"data": "abalone"},
-        parameters={"params:override_me": "params:abalone_processing"},
-        namespace="abalone",
+
+def create_pipeline(datasets: List[str]) -> Pipeline:
+
+    model_pipelines = [
+        pipeline(
+            pipe=new_train_eval_template(),
+            parameters={"override_me": dataset},
+            inputs={"data": dataset},
+            namespace=dataset,
+        )
+        for dataset in datasets
+    ]
+
+    consolidated_model_pipelines = pipeline(
+        pipe=sum(model_pipelines),
+        namespace="data_processing",
     )
 
-    housing_pipeline = pipeline(
-        pipe=processing_pipeline,
-        inputs={"data": "housing"},
-        parameters={"params:override_me": "params:housing_processing"},
-        namespace="housing",
-    )
-
-    wine_quality_pipeline = pipeline(
-        pipe=processing_pipeline,
-        inputs={"data": "wine_quality"},
-        parameters={"params:override_me": "params:wine_quality_processing"},
-        namespace="wine_quality",
-    )
-
-    return abalone_pipeline + housing_pipeline + wine_quality_pipeline
+    return consolidated_model_pipelines
