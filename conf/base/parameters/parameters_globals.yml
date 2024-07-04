@@ -1,1 +1,11 @@
 random_state: 2137
+
+datasets:
+  - abalone
+  - housing
+  - wine_quality
+
+models:
+  - linreg
+  - knn
+  - random_forest
