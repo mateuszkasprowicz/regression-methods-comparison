@@ -1,0 +1,11 @@
+"{namespace}.linreg":
+  type: pickle.PickleDataset
+  filepath: data/06_models/{namespace}_linreg.pkl
+
+"{namespace}.knn":
+  type: pickle.PickleDataset
+  filepath: data/06_models/{namespace}_knn.pkl
+
+"{namespace}.random_forst":
+  type: pickle.PickleDataset
+  filepath: data/06_models/{namespace}_random_forest.pkl

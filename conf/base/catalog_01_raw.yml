@@ -1,0 +1,11 @@
+abalone:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/abalone.csv
+
+housing:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/melb_data.csv
+
+wine_quality:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/winequalityN.csv
