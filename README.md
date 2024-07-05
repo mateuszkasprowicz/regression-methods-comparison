@@ -7,5 +7,10 @@ Initially, I developed three seperate notebooks to benchmark three ML techniques
 ## Advanced Kedro functionalities used
 
 - Modular pipelines
+- Multiple namespace layers
 - Hooks
+    - external packages config
 - Pipeline registry
+    - direct pipeline registration
+- Dataset factories
+- Loading parameters in code
