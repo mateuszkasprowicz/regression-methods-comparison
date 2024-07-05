@@ -3,7 +3,7 @@ from typing import List
 from kedro.pipeline import Pipeline, node
 from kedro.pipeline.modular_pipeline import pipeline
 
-from src.regression_methods_comparison.pipelines.utils import TEST_TRAIN_REFS
+from regression_methods_comparison.pipelines.utils import TEST_TRAIN_REFS
 from .nodes import evaluate_model, train_model
 
 
