@@ -4,14 +4,8 @@ import logging
 from kedro.pipeline import Pipeline, node
 from kedro.pipeline.modular_pipeline import pipeline
 
+from src.regression_methods_comparison.pipelines.utils import make_suffixes, TEST_TRAIN_REFS
 from .nodes import split_data, impute_missing_values, encode_categories
-
-
-TEST_TRAIN_REFS = ["X_train", "X_test", "y_train", "y_test"]
-
-
-def make_suffixes(strings: List[str], suffix: str):
-    return [name + suffix for name in strings]
 
 
 def new_processing_template() -> Pipeline:
