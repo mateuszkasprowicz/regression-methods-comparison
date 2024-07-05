@@ -14,7 +14,7 @@ def make_suffixes(strings: List[str], suffix: str):
     return [name + suffix for name in strings]
 
 
-def new_train_eval_template() -> Pipeline:
+def new_processing_template() -> Pipeline:
 
     return pipeline(
         [
@@ -41,7 +41,7 @@ def create_pipeline(datasets: List[str]) -> Pipeline:
 
     model_pipelines = [
         pipeline(
-            pipe=new_train_eval_template(),
+            pipe=new_processing_template(),
             parameters={"override_me": dataset},
             inputs={"data": dataset},
             namespace=dataset,
