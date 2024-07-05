@@ -24,7 +24,9 @@ def split_data(data: pd.DataFrame, parameters: dict[str, Any]) -> Tuple:
     return X_train, X_test, y_train, y_test
 
 
-def impute_missing_values(X_train, X_test, y_train, y_test, parameters: dict[str, Any]) -> Tuple:
+def impute_missing_values(
+    X_train, X_test, y_train, y_test, parameters: dict[str, Any]
+) -> Tuple:
     if "imputer" not in parameters:
         return X_train, X_test, y_train, y_test
 
@@ -41,7 +43,7 @@ def impute_missing_values(X_train, X_test, y_train, y_test, parameters: dict[str
 
     if "median_imputer" in imputers_params:
         median_columns = imputers_params["median_imputer"]["columns"]
-        imputers.append(( SimpleImputer(strategy="median"), median_columns))
+        imputers.append((SimpleImputer(strategy="median"), median_columns))
 
     imputing_preprocessor = make_column_transformer(
         *imputers,
@@ -56,7 +58,9 @@ def impute_missing_values(X_train, X_test, y_train, y_test, parameters: dict[str
     return X_train, X_test, y_train, y_test
 
 
-def encode_categories(X_train, X_test, y_train, y_test, parameters: dict[str, Any]) -> Tuple:
+def encode_categories(
+    X_train, X_test, y_train, y_test, parameters: dict[str, Any]
+) -> Tuple:
     if "encoder" not in parameters:
         return X_train, X_test, y_train, y_test
 
@@ -70,10 +74,15 @@ def encode_categories(X_train, X_test, y_train, y_test, parameters: dict[str, An
 
     if "target_encoder" in encoders_params:
         target_columns = encoders_params["target_encoder"]["columns"]
-        encoders.append((TargetEncoder(target_type="continuous", random_state=random_state), target_columns))
+        encoders.append(
+            (
+                TargetEncoder(target_type="continuous", random_state=random_state),
+                target_columns,
+            )
+        )
 
     if "drop" in encoders_params:
-        drop_columns = encoders_params["target_encoder"]["columns"]
+        drop_columns = encoders_params["drop"]["columns"]
         encoders.append(("drop", drop_columns))
 
     encoding_preprocessor = make_column_transformer(
