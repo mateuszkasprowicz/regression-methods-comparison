@@ -6,6 +6,6 @@ datasets:
   - wine_quality
 
 models:
-  - linreg
+  - linear_regression
   - knn
   - random_forest
