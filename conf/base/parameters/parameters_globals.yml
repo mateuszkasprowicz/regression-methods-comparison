@@ -1,0 +1,11 @@
+random_state: 2137
+
+datasets:
+  - abalone
+  - housing
+  - wine_quality
+
+models:
+  - linear_regression
+  - knn
+  - random_forest

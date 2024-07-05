@@ -1,0 +1,15 @@
+"{namespace}.X_train":
+  type: pandas.CSVDataset
+  filepath: data/05_model_input/{namespace}_X_train.csv
+
+"{namespace}.X_test":
+  type: pandas.CSVDataset
+  filepath: data/05_model_input/{namespace}_X_test.csv
+
+"{namespace}.Y_train":
+  type: pandas.CSVDataset
+  filepath: data/05_model_input/{namespace}_Y_train.csv
+
+"{namespace}.Y_test":
+  type: pandas.CSVDataset
+  filepath: data/05_model_input/{namespace}_Y_test.csv
