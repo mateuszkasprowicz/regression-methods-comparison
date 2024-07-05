@@ -1,16 +1,49 @@
-abalone_ml:
-  linreg: None
-  knn: None
-  random_forest: None
+train_evaluation:
+  abalone:
+    linear_regression:
+      module: sklearn.linear_model
+      class: LinearRegression
+      kwargs: null
+    knn:
+      module: sklearn.neighbors
+      class: KNeighborsRegressor
+      kwargs:
+        n_neighbors: 25
+    random_forest:
+      module: sklearn.ensemble
+      class: RandomForestRegressor
+      kwargs:
+        n_estimators: 100
 
-housing_ml:
-  linreg: None
-  knn: None
-  random_forest: None
+  housing:
+    linear_regression:
+      module: sklearn.linear_model
+      class: LinearRegression
+      kwargs: null
+    knn:
+      module: sklearn.neighbors
+      class: KNeighborsRegressor
+      kwargs:
+        n_neighbors: 25
+    random_forest:
+      module: sklearn.ensemble
+      class: RandomForestRegressor
+      kwargs:
+        n_estimators: 100
 
-wine_quality_ml:
-  linreg: None
-  knn: None
-  random_forest: None
-
-evaluate_ml: None
+  wine_quality:
+    linear_regression:
+      module: sklearn.linear_model
+      class: LinearRegression
+      kwargs: null
+    knn:
+      module: sklearn.neighbors
+      class: KNeighborsRegressor
+      kwargs:
+        n_neighbors: 25
+    random_forest:
+      module: sklearn.ensemble
+      class: RandomForestRegressor
+      kwargs:
+        n_estimators: 100
+  evaluate: null

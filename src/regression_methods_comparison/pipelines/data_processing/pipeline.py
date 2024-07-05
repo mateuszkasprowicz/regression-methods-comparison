@@ -1,4 +1,5 @@
 from typing import List
+import logging
 
 from kedro.pipeline import Pipeline, node
 from kedro.pipeline.modular_pipeline import pipeline
@@ -48,8 +49,12 @@ def create_pipeline(datasets: List[str]) -> Pipeline:
         for dataset in datasets
     ]
 
+    all_model_pipelines = sum(model_pipelines)
+    output_names = all_model_pipelines.outputs()
+
     consolidated_model_pipelines = pipeline(
-        pipe=sum(model_pipelines),
+        pipe=all_model_pipelines,
+        outputs=output_names,
         namespace="data_processing",
     )
 
