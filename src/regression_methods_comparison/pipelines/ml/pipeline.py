@@ -19,7 +19,7 @@ def new_train_eval_template() -> Pipeline:
             node(
                 func=evaluate_model,
                 inputs=["regressor", "X_test", "y_test"],
-                outputs="r2_score",
+                outputs="metrics",
                 tags="evaluate",
             ),
         ]
@@ -28,7 +28,6 @@ def new_train_eval_template() -> Pipeline:
 
 def create_pipeline(datasets: List[str], model_types: List[str]) -> Pipeline:
 
-    logger = logging.getLogger(__name__)
     test_train_refs = ["X_train", "X_test", "y_train", "y_test"]
 
     dataset_pipelines = []
