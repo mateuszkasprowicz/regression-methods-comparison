@@ -6,6 +6,7 @@ from kedro.pipeline.modular_pipeline import pipeline
 
 from .nodes import evaluate_model, train_model
 
+_LOGGER = logging.getLogger(__name__)
 
 def new_train_eval_template() -> Pipeline:
     return pipeline(
@@ -47,6 +48,7 @@ def create_pipeline(datasets: List[str], model_types: List[str]) -> Pipeline:
         dataset_pipelines.append(all_models_pipeline)
 
     all_dataset_pipelines = sum(dataset_pipelines)
+    output_names = all_dataset_pipelines.all_outputs()
     input_names = all_dataset_pipelines.inputs()
     data_input_names = [
         name for name in input_names if "test" in name or "train" in name
@@ -55,6 +57,7 @@ def create_pipeline(datasets: List[str], model_types: List[str]) -> Pipeline:
     consolidated_model_pipelines = pipeline(
         pipe=all_dataset_pipelines,
         inputs={k: k for k in data_input_names},
+        outputs=output_names,
         namespace="train_evaluation",
     )
 
