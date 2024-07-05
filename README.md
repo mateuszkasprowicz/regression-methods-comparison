@@ -4,6 +4,8 @@
 
 Initially, I developed three seperate notebooks to benchmark three ML techniques (linear regression, KNN, random forest) against three different datasets. After some time, I thought it might be a cool exercise to refactor them into a single Kedro workflow.
 
+![Kedro viz graph](img/kedro_viz.png)
+
 ## Advanced Kedro functionalities used
 
 - Modular pipelines
