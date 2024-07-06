@@ -6,10 +6,10 @@
   type: pandas.CSVDataset
   filepath: data/05_model_input/{namespace}_X_test.csv
 
-"{namespace}.Y_train":
+"{namespace}.y_train":
   type: pandas.CSVDataset
-  filepath: data/05_model_input/{namespace}_Y_train.csv
+  filepath: data/05_model_input/{namespace}_y_train.csv
 
-"{namespace}.Y_test":
+"{namespace}.y_test":
   type: pandas.CSVDataset
-  filepath: data/05_model_input/{namespace}_Y_test.csv
+  filepath: data/05_model_input/{namespace}_y_test.csv
