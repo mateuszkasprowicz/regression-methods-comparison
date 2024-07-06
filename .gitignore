@@ -149,3 +149,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# others
+session_store.db
+stats.json
